@@ -1,8 +1,8 @@
-import express from 'express';
-import path from 'path';
-import fetch from 'node-fetch'; // Utiliser 'node-fetch' si vous êtes en mode ES6
-import { fileURLToPath } from 'url';
-import { config } from './config.js'; // Importation de la configuration avec l'URL du Webhook
+const express = require('express');
+const path = require('path');
+const fetch = require('node-fetch');
+const { fileURLToPath } = require('url');
+const { config } = require('./config.js');
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -57,7 +57,9 @@ app.get('/thanks', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'thanks.html'));
 });
 
-// Démarrer le serveur sur le port 3000
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
+// Démarrer le serveur sur le port fourni par Render
+const port = process.env.PORT || 3000;  // Utilisez le port dynamique ou 3000 par défaut
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
+
