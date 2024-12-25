@@ -1,8 +1,8 @@
-const express = require('express');
-const path = require('path');
-const fetch = require('node-fetch');
-const { fileURLToPath } = require('url');
-const { config } = require('./config.js');
+import express from 'express';
+import path from 'path';
+import fetch from 'node-fetch';
+import { fileURLToPath } from 'url';
+import { config } from './config.js'; // Assurez-vous que le fichier config.js utilise également des exportations ES
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -62,4 +62,3 @@ const port = process.env.PORT || 3000;  // Utilisez le port dynamique ou 3000 pa
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
